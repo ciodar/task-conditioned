@@ -22,7 +22,7 @@ from ..detections import Detection
 __all__ = ['draw_boxes']
 
 try:
-    font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf', 10)
+    font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/arial.ttf', 10)
 except FileNotFoundError:
     font = ImageFont.load_default()
 

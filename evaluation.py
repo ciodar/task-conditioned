@@ -114,10 +114,10 @@ def evaluation_models():
     outfile = 'det_test_'
     res_prefix = 'results/' + outfile
 
-    # cfgfile = 'cfg/yolov3_kaist_tc_det.cfg'
-    # modelfile = 'weights/yolov3_kaist_tc_det_thermal.model'
-    cfgfile = 'cfg/yolov3_kaist.cfg'
-    modelfile = 'weights/yolov3_kaist_mix_80_20.weights'
+    cfgfile = 'cfg/yolov3_kaist_tc_det.cfg'
+    modelfile = 'weights/yolov3_kaist_tc_det_thermal.model'
+    #cfgfile = 'cfg/yolov3_kaist.cfg'
+    #modelfile = 'weights/yolov3_kaist_mix_80_20.weights'
 
     valid(datacfg, cfgfile, modelfile, outfile)
     cur_mAP = _do_python_eval(res_prefix, testlist, class_names, output_dir='output')

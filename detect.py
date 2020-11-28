@@ -10,7 +10,7 @@ import tqdm
 
 namesfile=None
 
-def detect_model(cfgfile, modelfile, dir):
+def detect_model(cfgfile, modelfile, dir,use_cuda=True):
     m = Darknet(cfgfile)
 
     check_model = modelfile.split('.')[-1]
@@ -22,7 +22,6 @@ def detect_model(cfgfile, modelfile, dir):
         m.load_weights(modelfile)
 
     # m.print_network()
-    use_cuda = True
     if use_cuda:
         m.cuda()
 
@@ -72,7 +71,7 @@ def detect_model(cfgfile, modelfile, dir):
     finish // 60, finish % 60, total_time / count_img))
 
 
-def detect_cv2(cfgfile, weightfile, imgfile):
+def detect_cv2(cfgfile, weightfile, imgfile,use_cuda=True):
 
     m = Darknet(cfgfile)
     # m.print_network()
@@ -83,8 +82,7 @@ def detect_cv2(cfgfile, weightfile, imgfile):
         m.load_state_dict(checkpoint['state_dict'])
     else:
         m.load_weights(weightfile)
-    
-    use_cuda = True
+
     if use_cuda:
         m.cuda()
 
@@ -107,7 +105,7 @@ def detect_cv2(cfgfile, weightfile, imgfile):
     print("save plot results to %s" % savename)
     cv2.imwrite(savename, img)
 
-def readvideo_cv2(cfgfile, weightfile, videoname):
+def readvideo_cv2(cfgfile, weightfile, videoname,use_cuda=True):
     m = Darknet(cfgfile)
     # m.print_network()
     check_model = weightfile.split('.')[-1]
@@ -118,7 +116,6 @@ def readvideo_cv2(cfgfile, weightfile, videoname):
     else:
         m.load_weights(weightfile)
 
-    use_cuda = True
     if use_cuda:
         m.cuda()
 
@@ -180,21 +177,25 @@ def readvideo_cv2(cfgfile, weightfile, videoname):
 
 if __name__ == '__main__':
     globals()["namesfile"] = 'data/kaist_person.names'
-    cfgfile = 'cfg/yolov3_kaist.cfg'
-    weightfile = 'weights/kaist_thermal_detector.weights'
+    cfgfile = 'cfg/yolov3_kaist_tc_det.cfg'
+    weightfile = 'weights/yolov3_kaist_tc_det_thermal.weights'
     if len(sys.argv) >= 1:
         if len(sys.argv) == 2:
             imgfile = sys.argv[1]
         elif len(sys.argv) == 3:
             imgfile = sys.argv[1]
             weightfile = sys.argv[2]
+        elif len(sys.argv) == 4:
+            imgfile = sys.argv[1]
+            weightfile = sys.argv[2]
+            use_cuda = sys.argv[3] == 'True'
 
         if os.path.isdir(imgfile):
-            detect_model(cfgfile, weightfile,imgfile)
+            detect_model(cfgfile, weightfile,imgfile,use_cuda)
         elif (imgfile.split('.')[1] == 'jpg') or (imgfile.split('.')[1] == 'png') or (imgfile.split('.')[1] == 'jpeg'):
-            detect_cv2(cfgfile, weightfile, imgfile)
+            detect_cv2(cfgfile, weightfile, imgfile,use_cuda)
         else:
-            readvideo_cv2(cfgfile, weightfile,imgfile)
+            readvideo_cv2(cfgfile, weightfile,imgfile,use_cuda)
     else:
         print('Usage: ')
         print('  python detect.py image/video/folder [weightfile]')

@@ -16,7 +16,7 @@ def demo(cfgfile, weightfile):
     namesfile = 'data/kaist_person.names'
     class_names = load_class_names(namesfile)
  
-    use_cuda = True
+    use_cuda = False
     if use_cuda:
         m.cuda()
 
@@ -55,8 +55,8 @@ def demo(cfgfile, weightfile):
 
 ############################################
 if __name__ == '__main__':
-    cfgfile = 'cfg/yolov3_kaist.cfg'
-    weightfile = 'weights/kaist_thermal_detector.weights'
+    cfgfile = 'cfg/yolov3_kaist_tc_det.cfg'
+    weightfile = 'weights/yolov3_kaist_tc_det_thermal.weights'
     if len(sys.argv) >=1:
         if len(sys.argv) == 3:
             cfgfile = sys.argv[1]
