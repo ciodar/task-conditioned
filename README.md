@@ -1,13 +1,10 @@
-# <a href="https://www.researchgate.net/publication/343167450_Task-conditioned_Domain_Adaptation_for_Pedestrian_Detection_in_Thermal_Imagery"> Task-conditioned Domain Adaptation for Pedestrian Detection in Thermal Imagery </a>
-## This implementation for our ECCV 2020 paper, training YOLOv3 on KAIST dataset with Task-conditioned network for Pedestrian Detection task in Thermal Domain.
+# <a href="https://www.researchgate.net/publication/343167450_Task-conditioned_Domain_Adaptation_for_Pedestrian_Detection_in_Thermal_Imagery"> Task-conditioned Domain Adaptation for People Counting in Thermal Imagery </a>
+## Branch from <a href="https://github.com/mrkieumy/task-conditioned">task-conditioned</a> repository, training YOLOv3 on KAIST dataset with Task-conditioned network for Pedestrian Detection task in Thermal Domain.
 
-### This implementation was expanded from our previous work which was the Best Student Paper Honorable Mention Award <a href="https://github.com/mrkieumy/YOLOv3_PyTorch"> "Domain Adaptation for Privacy-Preserving Pedestrian Detection in Thermal Imagery" </a> . 
-### We added and changed many files and functions for our task-conditioned network.
-
+### This implementation was expanded from My Kieu's previous work which was the Best Student Paper Honorable Mention Award <a href="https://github.com/mrkieumy/YOLOv3_PyTorch"> "Domain Adaptation for Privacy-Preserving Pedestrian Detection in Thermal Imagery" </a> . 
 
 ### The short introduction of paper 
 [![Video detection](examples/firstslide.jpg)](https://youtu.be/n_jD-FpDsaI "Click to play on Youtube.com")
-
 
 ### Improvement of this repository
 * Developed the best single-modality state-of-the-art result for Pedestrian detection task on KAIST dataset.
@@ -137,43 +134,11 @@ Please check it
 python demo.py
 ```
 
-
 ### Example results:
 ![Image detection](examples/predictions.jpg)
 
 Video of Results: 
 [![Video detection](examples/tc_det.jpg)](https://youtu.be/gZP8Qp41bGo "Click to play on Youtube.com")
 
-### Results on KAIST dataset:
-#### Our reported result on ECCV 2020 paper:
-![Result](examples/compareSOTA.png)
- 
- 
- Other numbers:
- 
-* mean Average Precision (mAP): 61.49%
-
-| Reasonable | Day & Night | Day | Night
-| --- | --- | --- | --- |
-| Precision | 82.87% | 77.16% | 93.82% |
-| Miss Rate | 27.11% | 34.81% | 10.31% |
-
 The paper is available here <a href="https://www.researchgate.net/publication/343167450_Task-conditioned_Domain_Adaptation_for_Pedestrian_Detection_in_Thermal_Imagery"> Task-conditioned Domain Adaptation for Pedestrian Detection in Thermal Imagery </a>
 
-## Citation
-We really hope this repository is useful for you. Please cite our paper as
-```
-@inproceedings{KieuECCV2020taskconditioned,
-	Author = {Kieu, My and Bagdanov, Andrew D and Bertini, Marco and Del Bimbo, Alberto},
-	Booktitle = {Proc. of European Conference on Computer Vision (ECCV)},
-	Title = {Task-conditioned Domain Adaptation for Pedestrian Detection in Thermal Imagery},
-	Year = {2020}
-	}
-
-```
-
-If you have any comment or question about this repository, please leave it in Issues.
-
-Other contribution, please contact me by email: my.kieu@unifi.it.
-
-Thank you so much for your interest in our work.
