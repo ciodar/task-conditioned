@@ -3,9 +3,6 @@
 
 ### This implementation was expanded from My Kieu's previous work which was the Best Student Paper Honorable Mention Award <a href="https://github.com/mrkieumy/YOLOv3_PyTorch"> "Domain Adaptation for Privacy-Preserving Pedestrian Detection in Thermal Imagery" </a> . 
 
-### The short introduction of paper 
-[![Video detection](examples/firstslide.jpg)](https://youtu.be/n_jD-FpDsaI "Click to play on Youtube.com")
-
 ### Improvement of this repository
 * Developed the best single-modality state-of-the-art result for Pedestrian detection task on KAIST dataset.
 * Invention Task-conditioned network architecture which simutaniously solves two related tasks (classification task and detection task).
