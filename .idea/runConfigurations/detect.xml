@@ -10,7 +10,7 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
     <option name="SCRIPT_NAME" value="$PROJECT_DIR$/detect.py" />
-    <option name="PARAMETERS" value="images/set06_V003_lwir_I02319.png cfg/yolov3_kaist_tc_det.cfg False" />
+    <option name="PARAMETERS" value="images/FLIR_video_02559.jpeg weights/yolov3_kaist_mix_80_20.weights False" />
     <option name="SHOW_COMMAND_LINE" value="true" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />

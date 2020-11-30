@@ -28,7 +28,7 @@ def detect_model(cfgfile, modelfile, dir,use_cuda=True):
     m.eval()
 
     class_names = load_class_names(namesfile)
-    newdir = dir.replace('/', '_') + 'predicted'
+    newdir = os.path.join(*dir.split('/')) +'_predicted'
     if not os.path.exists(newdir):
         os.mkdir(newdir)
 
@@ -37,7 +37,8 @@ def detect_model(cfgfile, modelfile, dir,use_cuda=True):
     # count_img = 0
     for count_img, imgfile in enumerate(tqdm.tqdm(os.listdir(dir))):
         # count_img +=1
-        imgfile = os.path.join(dir, imgfile)
+        imgfilename = imgfile
+        imgfile = os.path.join(*dir.split('/'), imgfile)
 
         img = cv2.imread(imgfile)
         sized = cv2.resize(img, (m.width, m.height))
@@ -57,11 +58,11 @@ def detect_model(cfgfile, modelfile, dir,use_cuda=True):
         blue = (0, 0, 255)
         plot_boxes_cv2(img, boxes, class_names=class_names, color=red)
 
-        savename = (imgfile.split('/')[-1]).split('.')[0]
-        savename = savename + '_predicted.jpg'
+        savename = imgfilename + '_predicted.jpg'
         savename = os.path.join(newdir, savename)
         # print("save plot results to %s" % savename)
-        cv2.imwrite(savename, img)
+        if not cv2.imwrite(savename, img):
+            print('Could not save image into %s' % savename)
     finish = time.time() - start
 
     count_img += 1
