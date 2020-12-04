@@ -176,28 +176,37 @@ def readvideo_cv2(cfgfile, weightfile, videoname,use_cuda=True):
     out.release()
     cv2.destroyAllWindows()
 
-if __name__ == '__main__':
-    globals()["namesfile"] = 'data/kaist_person.names'
-    cfgfile = 'cfg/yolov3_kaist.cfg'
-    weightfile = 'weights/kaist_thermal_detector.weights'
-    if len(sys.argv) >= 1:
-        if len(sys.argv) == 2:
-            imgfile = sys.argv[1]
-        elif len(sys.argv) == 3:
-            imgfile = sys.argv[1]
-            weightfile = sys.argv[2]
-        elif len(sys.argv) == 4:
-            imgfile = sys.argv[1]
-            weightfile = sys.argv[2]
-            use_cuda = sys.argv[3] == 'True'
+def detect(*args):
+    options = {
+        'names':'data/kaist_person.names',
+        'cfg': 'cfg/yolov3_kaist.cfg',
+        'weight': 'weights/kaist_thermal_detector.weights',
+        'cuda': False
+    }
+    print(args[1])
+    options.update(args[1])
+    print(options)
 
+    globals()["namesfile"]=options['names']
+    cfgfile=options['cfg']
+    weightfile=options['weight']
+    use_cuda = options['cuda'] == 'True'
+
+    for imgfile in args[0]:
         if os.path.isdir(imgfile):
-            detect_model(cfgfile, weightfile,imgfile,use_cuda)
+            detect_model(cfgfile, weightfile, imgfile, use_cuda)
         elif (imgfile.split('.')[1] == 'jpg') or (imgfile.split('.')[1] == 'png') or (imgfile.split('.')[1] == 'jpeg'):
-            detect_cv2(cfgfile, weightfile, imgfile,use_cuda)
+            detect_cv2(cfgfile, weightfile, imgfile, use_cuda)
         else:
-            readvideo_cv2(cfgfile, weightfile,imgfile,use_cuda)
+            readvideo_cv2(cfgfile, weightfile, imgfile, use_cuda)
+
+if __name__ == '__main__':
+    argv = sys.argv[1:]
+    kwargs = {kw[0][1:]: kw[1] for kw in [ar.split('=') for ar in argv if ar.find('=') > 0]}
+    args = [arg for arg in argv if arg.find('=') < 0]
+    if len(args)>0:
+        detect(args,kwargs)
     else:
         print('Usage: ')
-        print('  python detect.py image/video/folder [weightfile]')
+        print('  python detect.py image/video/folder [-weight="path_to_weightfile"] [-cfg="path_to_configfile"] [-cuda=True/False]')
         print('  or using:  python detect.py thermal_kaist.png ')
