@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/json_annotations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/detect.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/detect.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drawBBxs.py" beforeDir="false" afterPath="$PROJECT_DIR$/drawBBxs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json_annotations.py" beforeDir="false" afterPath="$PROJECT_DIR$/json_annotations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -2536,23 +2539,33 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="flir_domain_adaptation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/anaconda3/envs/tesi_pytorch/Lib/site-packages/PIL/ImageFont.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1kpHE0ixVSS0FQwEldyi3FHsQuo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -2561,19 +2574,7 @@
       <recent name="K:\task-conditioned\images\kaist" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.detect">
+  <component name="RunManager" selected="Python.json_annotations">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="task-conditioned" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -2600,9 +2601,6 @@
       <module name="task-conditioned" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Dario\anaconda3\envs\tesi_pytorch\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -2648,9 +2646,11 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.json_annotations" />
+        <item itemvalue="Python.json_annotations" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -2673,7 +2673,14 @@
       <workItem from="1606774348458" duration="3171000" />
       <workItem from="1606814466087" duration="8713000" />
       <workItem from="1607031900292" duration="1501000" />
-      <workItem from="1607106007776" duration="4562000" />
+      <workItem from="1607106007776" duration="8402000" />
+      <workItem from="1607167162207" duration="8406000" />
+      <workItem from="1607192957410" duration="6358000" />
+      <workItem from="1607278336637" duration="5188000" />
+      <workItem from="1607292502737" duration="1286000" />
+      <workItem from="1607328691465" duration="8355000" />
+      <workItem from="1607362766474" duration="2574000" />
+      <workItem from="1607365954774" duration="2483000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed detection regression">
       <created>1606575771239</created>
@@ -2689,29 +2696,44 @@
       <option name="project" value="LOCAL" />
       <updated>1606744396980</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added json annotations analysis">
+      <created>1607110642973</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607110642973</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Improved detection command line handling">
+      <created>1607110667203</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607110667203</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed detection regression" />
     <MESSAGE value="Windows compatibility with paths of folders&#10;Cleanup of unused folders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Windows compatibility with paths of folders&#10;Cleanup of unused folders" />
+    <MESSAGE value="Added json annotations analysis" />
+    <MESSAGE value="Improved detection command line handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved detection command line handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2722,16 +2744,16 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/anaconda3/envs/tesi_pytorch/Lib/site-packages/PIL/ImageFont.py</url>
-          <line>835</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/evaluation.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1606512796750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/task_conditioned$json_annotations.coverage" NAME="json_annotations Coverage Results" MODIFIED="1606853832135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/task_conditioned$detect.coverage" NAME="detect Coverage Results" MODIFIED="1607109638238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1607367555482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$json_annotations.coverage" NAME="json_annotations Coverage Results" MODIFIED="1607331776541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$detect.coverage" NAME="detect Coverage Results" MODIFIED="1607167219815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
