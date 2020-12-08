@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="Added SSH Configuration and deployment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/flir.data" beforeDir="false" afterPath="$PROJECT_DIR$/data/flir.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/flir_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/flir_test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/flir_train.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/flir_train.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drawBBxs.py" beforeDir="false" afterPath="$PROJECT_DIR$/drawBBxs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json_annotations.py" beforeDir="false" afterPath="$PROJECT_DIR$/json_annotations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -2531,6 +2529,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="pandas_json_analysis" />
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
@@ -2539,13 +2540,16 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="flir_domain_adaptation" />
+        <entry key="$PROJECT_DIR$" value="pandas_json_analysis" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/anaconda3/envs/tesi_pytorch/Lib/site-packages/PIL/ImageFont.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1kpHE0ixVSS0FQwEldyi3FHsQuo" />
   <component name="ProjectViewState">
@@ -2574,7 +2578,7 @@
       <recent name="K:\task-conditioned\images\kaist" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.json_annotations">
+  <component name="RunManager" selected="Python.evaluation">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="task-conditioned" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -2601,6 +2605,9 @@
       <module name="task-conditioned" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\Dario\anaconda3\envs\tesi_pytorch\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -2680,7 +2687,9 @@
       <workItem from="1607292502737" duration="1286000" />
       <workItem from="1607328691465" duration="8355000" />
       <workItem from="1607362766474" duration="2574000" />
-      <workItem from="1607365954774" duration="2483000" />
+      <workItem from="1607365954774" duration="6731000" />
+      <workItem from="1607375573677" duration="208000" />
+      <workItem from="1607451407085" duration="2600000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed detection regression">
       <created>1606575771239</created>
@@ -2710,7 +2719,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607110667203</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Pandas json analysis">
+      <created>1607368503095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607368503095</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added SSH Configuration and deployment">
+      <created>1607368659466</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607368659466</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2733,7 +2756,9 @@
     <MESSAGE value="Windows compatibility with paths of folders&#10;Cleanup of unused folders" />
     <MESSAGE value="Added json annotations analysis" />
     <MESSAGE value="Improved detection command line handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved detection command line handling" />
+    <MESSAGE value="Added Pandas json analysis" />
+    <MESSAGE value="Added SSH Configuration and deployment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SSH Configuration and deployment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2745,14 +2770,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/evaluation.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="17" />
+          <line>44</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1607367555482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1607453929452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/task_conditioned$json_annotations.coverage" NAME="json_annotations Coverage Results" MODIFIED="1607331776541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/task_conditioned$detect.coverage" NAME="detect Coverage Results" MODIFIED="1607167219815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

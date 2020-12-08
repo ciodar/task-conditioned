@@ -428,9 +428,12 @@ def do_detect_condition(model, img, conf_thresh, nms_thresh, use_cuda=True):
     return boxes
 
 def read_data_cfg(datacfg):
-    options = dict()
-    options['gpus'] = '0,1,2,3'
-    options['num_workers'] = '0'
+    options = {
+        #TODO check if gpus can be transformed in list
+        'gpus':'0,1,2,3'
+        ,'num_workers':0
+    }
+
     with open(datacfg, 'r') as fp:
         lines = fp.readlines()
 
@@ -464,6 +467,15 @@ def file_lines(thefilepath):
         count += buffer.count(b'\n')
     thefile.close( )
     return count
+
+def get_image_list(image_path,foldername):
+    image_list = []
+    if(image_path[-1]!='/'):
+        image_path = image_path + '/'
+    with open(foldername) as fp:
+        tmp_files = fp.readlines()
+        image_list = [os.path.realpath(image_path + item.rstrip()) for item in tmp_files]
+    return image_list
 
 def get_image_size(fname):
     '''Determine the image type of fhandle and return its size.

@@ -2,7 +2,7 @@ import torch
 from darknet import Darknet
 import dataset
 from torchvision import datasets, transforms
-from utils import get_all_boxes, bbox_iou, nms, read_data_cfg, load_class_names
+from utils import get_all_boxes, bbox_iou, nms, read_data_cfg, load_class_names, get_image_list
 from image import correct_yolo_boxes
 import os
 import tqdm
@@ -11,17 +11,17 @@ from lamr_ap import meanAP_LogAverageMissRate
 from to_JSON import convert_predict_to_JSON
 from cfg import parse_cfg
 
-def valid(datacfg, cfgfile, modelfile, outfile, condition=False):
+def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False):
     options = read_data_cfg(datacfg)
     valid_images = options['valid']
     print('Validate with the list file: ',valid_images)
     name_list = options['names']
-    prefix = 'results'
     names = load_class_names(name_list)
+    trainset_path = options['trainset_path']
+    valset_path = options['valset_path']
+    prefix = 'results'
 
-    with open(valid_images) as fp:
-        tmp_files = fp.readlines()
-        valid_files = [item.rstrip() for item in tmp_files]
+    valid_files = get_image_list(valset_path,valid_images)
     
     m = Darknet(cfgfile)
 
@@ -38,9 +38,10 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False):
 
 
     # m.savemodel()
-    m.cuda()
+    if use_cuda:
+        m.cuda()
     m.eval()
-
+    #TODO Windows compatibiity
     valid_dataset = dataset.listDataset(valid_images, shape=(m.width, m.height),
                        shuffle=False,
                        transform=transforms.Compose([
@@ -70,7 +71,8 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False):
         shape=(m.width, m.height)
 
     for count_loop, (data, target, org_w, org_h) in enumerate(tqdm.tqdm(valid_loader)):
-        data = data.cuda()
+        if use_cuda:
+            data = data.cuda()
 
         if condition:
             output, _cls = m(data)
@@ -106,7 +108,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False):
 
 def evaluation_models():
 
-    datacfg = 'data/kaist.data'
+    datacfg = 'data/flir.data'
     data_options = read_data_cfg(datacfg)
     testlist = data_options['valid']
     class_names = data_options['names']
