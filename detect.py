@@ -183,9 +183,7 @@ def detect(*args):
         'weight': 'weights/kaist_thermal_detector.weights',
         'cuda': False
     }
-    print(args[1])
     options.update(args[1])
-    print(options)
 
     globals()["namesfile"]=options['names']
     cfgfile=options['cfg']

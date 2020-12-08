@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="Added SSH Configuration and deployment">
+    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="Enhanced configuration for evaluaton">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/flir.data" beforeDir="false" afterPath="$PROJECT_DIR$/data/flir.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/flir_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/flir_test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/flir_train.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/flir_train.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drawBBxs.py" beforeDir="false" afterPath="$PROJECT_DIR$/drawBBxs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -2558,7 +2555,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -2689,7 +2686,7 @@
       <workItem from="1607362766474" duration="2574000" />
       <workItem from="1607365954774" duration="6731000" />
       <workItem from="1607375573677" duration="208000" />
-      <workItem from="1607451407085" duration="2600000" />
+      <workItem from="1607451407085" duration="6680000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed detection regression">
       <created>1606575771239</created>
@@ -2733,7 +2730,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607368659466</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Enhanced configuration for evaluaton">
+      <created>1607454148570</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607454148570</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2758,7 +2762,8 @@
     <MESSAGE value="Improved detection command line handling" />
     <MESSAGE value="Added Pandas json analysis" />
     <MESSAGE value="Added SSH Configuration and deployment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SSH Configuration and deployment" />
+    <MESSAGE value="Enhanced configuration for evaluaton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhanced configuration for evaluaton" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2768,16 +2773,11 @@
           <line>876</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/evaluation.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1607453929452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1607462544302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/task_conditioned$json_annotations.coverage" NAME="json_annotations Coverage Results" MODIFIED="1607331776541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/task_conditioned$detect.coverage" NAME="detect Coverage Results" MODIFIED="1607167219815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

@@ -11,7 +11,7 @@ from lamr_ap import meanAP_LogAverageMissRate
 from to_JSON import convert_predict_to_JSON
 from cfg import parse_cfg
 
-def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False):
+def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,gpu = 0):
     options = read_data_cfg(datacfg)
     valid_images = options['valid']
     print('Validate with the list file: ',valid_images)
@@ -72,7 +72,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False)
 
     for count_loop, (data, target, org_w, org_h) in enumerate(tqdm.tqdm(valid_loader)):
         if use_cuda:
-            data = data.cuda()
+            data = data.cuda(gpu)
 
         if condition:
             output, _cls = m(data)
@@ -106,31 +106,44 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False)
     for i in range(m.num_classes):
         fps[i].close()
 
-def evaluation_models():
+def evaluation_models(*args):
+    #default options
+    options = {
+        'datacfg' : 'data/flir.data',
+        'outfile' : 'det_test',
+        'cfgfile' : 'cfg/yolov3_kaist.cfg',
+        'modelfile' : 'weights/yolov3_kaist_mix_80_20.weights',
+        'use_cuda' : False,
+        'gpu' : 0
+    }
+    options.update(args[0])
 
-    datacfg = 'data/flir.data'
+    datacfg = options['datacfg']
+    outfile = options['outfile']
+    cfgfile = options['cfgfile']
+    modelfile = options['modelfile']
+    use_cuda = options['use_cuda'] == 'False'
+    gpu = options['gpu']
+
     data_options = read_data_cfg(datacfg)
     testlist = data_options['valid']
     class_names = data_options['names']
 
-    outfile = 'det_test_'
     res_prefix = 'results/' + outfile
 
-    # cfgfile = 'cfg/yolov3_kaist_tc_det.cfg'
-    # modelfile = 'weights/yolov3_kaist_tc_det_thermal.model'
-    cfgfile = 'cfg/yolov3_kaist.cfg'
-    modelfile = 'weights/yolov3_kaist_mix_80_20.weights'
-
-    valid(datacfg, cfgfile, modelfile, outfile)
-    cur_mAP = _do_python_eval(res_prefix, testlist, class_names, output_dir='output')
-    convert_predict_to_JSON()
-    all_ap, day_ap, night_ap, all_mr, day_mr, night_mr = meanAP_LogAverageMissRate()
-    print('mAP: %.4f \nap: %.4f ap_d: %.4f ap_n: %.4f lamr: %.4f mr_d: %.4f mr_n: %.4f \n' % (
-        cur_mAP, all_ap / 100.0, day_ap / 100.0, night_ap / 100.0, all_mr / 100.0, day_mr / 100.0, night_mr / 100.0))
+    valid(datacfg, cfgfile, modelfile, outfile,use_cuda)
+    #cur_mAP = _do_python_eval(res_prefix, testlist, class_names, output_dir='output')
+    #convert_predict_to_JSON()
+    #all_ap, day_ap, night_ap, all_mr, day_mr, night_mr = meanAP_LogAverageMissRate()
+    #print('mAP: %.4f \nap: %.4f ap_d: %.4f ap_n: %.4f lamr: %.4f mr_d: %.4f mr_n: %.4f \n' % (
+    #    cur_mAP, all_ap / 100.0, day_ap / 100.0, night_ap / 100.0, all_mr / 100.0, day_mr / 100.0, night_mr / 100.0))
 if __name__ == '__main__':
     import sys
+    argv = sys.argv[1:]
+    kwargs = {kw[0][1:]: kw[1] for kw in [ar.split('=') for ar in argv if ar.find('=') > 0]}
+    args = [arg for arg in argv if arg.find('=') < 0]
     if len(sys.argv) >=1:
-        evaluation_models()
+        evaluation_models(kwargs)
     else:
         print('Usage:')
         print(' python Evaluation_model.py')
