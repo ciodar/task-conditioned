@@ -87,15 +87,15 @@ def detect_cv2(cfgfile, weightfile, imgfile,use_cuda=True):
     if use_cuda:
         m.cuda()
 
-    img = cv2.imread(imgfile)
+    img = cv2.imread(os.path.realpath(imgfile))
     sized = cv2.resize(img, (m.width, m.height))
     sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
     
     start = time.time()
     if check_model == 'model':
-        boxes = do_detect_condition(m, sized, 0.5, 0.4, use_cuda)
+        boxes = do_detect_condition(m, sized, 0.5, 0.45, use_cuda)
     else:
-        boxes = do_detect(m, sized, 0.5, 0.4, use_cuda)
+        boxes = do_detect(m, sized, 0.5, 0.45, use_cuda)
     finish = time.time()
 
     class_names = load_class_names(namesfile)
@@ -201,7 +201,7 @@ def detect(*args):
 if __name__ == '__main__':
     argv = sys.argv[1:]
     kwargs = {kw[0][1:]: kw[1] for kw in [ar.split('=') for ar in argv if ar.find('=') > 0]}
-    args = [arg for arg in argv if arg.find('=') < 0]
+    args = [' '.join([arg for arg in argv if arg.find('=') < 0])]
     if len(args)>0:
         detect(args,kwargs)
     else:

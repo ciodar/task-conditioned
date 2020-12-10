@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="Enhanced configuration for evaluaton">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="Added parameters command line handling on evaluation">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/detect.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/detect.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/flir_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/flir_test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/detect.py" afterDir="false" />
@@ -2575,7 +2575,7 @@
       <recent name="K:\task-conditioned\images\kaist" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.evaluation">
+  <component name="RunManager" selected="Python.detect">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="task-conditioned" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -2602,9 +2602,6 @@
       <module name="task-conditioned" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\Dario\anaconda3\envs\tesi_pytorch\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -2612,7 +2609,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluation.py" />
-      <option name="PARAMETERS" value="weights/yolov3_kaist_tc_det_thermal.weights" />
+      <option name="PARAMETERS" value="-model=&quot;weights/yolov3_kaist_tc_det_thermal.weights&quot; -use_cuda=False" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -2686,7 +2683,9 @@
       <workItem from="1607362766474" duration="2574000" />
       <workItem from="1607365954774" duration="6731000" />
       <workItem from="1607375573677" duration="208000" />
-      <workItem from="1607451407085" duration="6680000" />
+      <workItem from="1607451407085" duration="7420000" />
+      <workItem from="1607550495729" duration="2537000" />
+      <workItem from="1607634654497" duration="5429000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed detection regression">
       <created>1606575771239</created>
@@ -2737,7 +2736,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607454148570</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added parameters command line handling on evaluation">
+      <created>1607463066605</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607463066605</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2763,7 +2769,8 @@
     <MESSAGE value="Added Pandas json analysis" />
     <MESSAGE value="Added SSH Configuration and deployment" />
     <MESSAGE value="Enhanced configuration for evaluaton" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhanced configuration for evaluaton" />
+    <MESSAGE value="Added parameters command line handling on evaluation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added parameters command line handling on evaluation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2773,12 +2780,27 @@
           <line>876</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/evaluation.py</url>
+          <line>83</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/evaluation.py</url>
+          <line>141</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/detect.py</url>
+          <line>90</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1607462544302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1607636538781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/task_conditioned$json_annotations.coverage" NAME="json_annotations Coverage Results" MODIFIED="1607331776541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/task_conditioned$detect.coverage" NAME="detect Coverage Results" MODIFIED="1607167219815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$detect.coverage" NAME="detect Coverage Results" MODIFIED="1607641106839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

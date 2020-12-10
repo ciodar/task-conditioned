@@ -6,10 +6,10 @@ from utils import get_all_boxes, bbox_iou, nms, read_data_cfg, load_class_names,
 from image import correct_yolo_boxes
 import os
 import tqdm
-from my_eval import _do_python_eval
-from lamr_ap import meanAP_LogAverageMissRate
-from to_JSON import convert_predict_to_JSON
-from cfg import parse_cfg
+#from my_eval import _do_python_eval
+#from lamr_ap import meanAP_LogAverageMissRate
+#from to_JSON import convert_predict_to_JSON
+#from cfg import parse_cfg
 
 def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,gpu = 0):
     options = read_data_cfg(datacfg)
@@ -46,7 +46,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
                        shuffle=False,
                        transform=transforms.Compose([
                            transforms.ToTensor(),
-                       ]), condition=condition)
+                       ]))
     valid_batchsize = 2
     assert(valid_batchsize > 1)
 
@@ -79,7 +79,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
         else:
             output = m(data)
 
-        batch_boxes = get_all_boxes(output, shape, conf_thresh, m.num_classes, only_objectness=0, validation=True)
+        batch_boxes = get_all_boxes(output, shape, conf_thresh, m.num_classes, only_objectness=0, validation=True,use_cuda=use_cuda)
         
         for i in range(len(batch_boxes)):
             lineId += 1
@@ -122,7 +122,7 @@ def evaluation_models(*args):
     outfile = options['outfile']
     cfgfile = options['cfgfile']
     modelfile = options['modelfile']
-    use_cuda = options['use_cuda'] == 'False'
+    use_cuda = options['use_cuda'] == 'True'
     gpu = options['gpu']
 
     data_options = read_data_cfg(datacfg)
