@@ -1,9 +1,9 @@
 classes= 3
 train  = data/flir_train.txt
-valid  = data/flir_test.txt
+valid  = data/flir_train.txt
 names = data/flir.names
-trainset_path = K:/dataset/flir dataset/train/thermal_8_bit
-valset_path = K:/dataset/flir dataset/val/thermal_8_bit
+trainset_path = /data/dcioni/FLIR_ADAS_1_3/train/thermal_8_bit
+valset_path = /data/dcioni/FLIR_ADAS_1_3/val/thermal_8_bit
 backup = backup
 logfile = backup/log_training.txt
 

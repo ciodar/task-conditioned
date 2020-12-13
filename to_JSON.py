@@ -33,8 +33,8 @@ def convert_predict_to_JSON():
             bottom = float(listdata[5])
             allscore.append(confscore)
 
-            ###this is only for KAIST dataset.
-            imageID = imageID.replace('V','/V').replace('visible','/').replace('lwir','/').replace('_','')
+            ###this is only for FLIR dataset.
+            imageID = int(listdata[0].split('_',1)[1]) -1
 
             alldata.append({
                 'image_id':imageID,

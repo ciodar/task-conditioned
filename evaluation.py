@@ -8,7 +8,7 @@ import os
 import tqdm
 #from my_eval import _do_python_eval
 #from lamr_ap import meanAP_LogAverageMissRate
-#from to_JSON import convert_predict_to_JSON
+from to_JSON import convert_predict_to_JSON
 #from cfg import parse_cfg
 
 def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,gpu = 0):
@@ -17,7 +17,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
     print('Validate with the list file: ',valid_images)
     name_list = options['names']
     names = load_class_names(name_list)
-    trainset_path = options['trainset_path']
+    #trainset_path = options['trainset_path']
     valset_path = options['valset_path']
     prefix = 'results'
 
@@ -55,10 +55,10 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
         valid_dataset, batch_size=valid_batchsize, shuffle=False, **kwargs) 
 
     fps = [0]*m.num_classes
-    if not os.path.exists('results'):
-        os.mkdir('results')
+    if not os.path.exists(prefix):
+        os.mkdir(prefix)
     for i in range(m.num_classes):
-        buf = '%s/%s%s.txt' % (prefix, outfile, names[i])
+        buf = '%s/%s_%s.txt' % (prefix, outfile, names[i])
         fps[i] = open(buf, 'w')
    
     lineId = -1
@@ -91,10 +91,10 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
             correct_yolo_boxes(boxes, width, height, m.width, m.height)
             boxes = nms(boxes, nms_thresh)
             for box in boxes:
-                x1 = (box[0] - box[2]/2.0) * width
-                y1 = (box[1] - box[3]/2.0) * height
-                x2 = (box[0] + box[2]/2.0) * width
-                y2 = (box[1] + box[3]/2.0) * height
+                x1 = int((box[0] - box[2]/2.0) * width)
+                y1 = int((box[1] - box[3]/2.0) * height)
+                x2 = int((box[0] + box[2]/2.0) * width)
+                y2 = int((box[1] + box[3]/2.0) * height)
 
                 det_conf = box[4]
                 for j in range((len(box)-5)//2):
@@ -133,7 +133,7 @@ def evaluation_models(*args):
 
     valid(datacfg, cfgfile, modelfile, outfile,use_cuda)
     #cur_mAP = _do_python_eval(res_prefix, testlist, class_names, output_dir='output')
-    #convert_predict_to_JSON()
+    convert_predict_to_JSON()
     #all_ap, day_ap, night_ap, all_mr, day_mr, night_mr = meanAP_LogAverageMissRate()
     #print('mAP: %.4f \nap: %.4f ap_d: %.4f ap_n: %.4f lamr: %.4f mr_d: %.4f mr_n: %.4f \n' % (
     #    cur_mAP, all_ap / 100.0, day_ap / 100.0, night_ap / 100.0, all_mr / 100.0, day_mr / 100.0, night_mr / 100.0))
