@@ -112,7 +112,7 @@ def evaluation_models(*args):
     options = {
         'datacfg' : 'data/flir.data',
         'outfile' : 'K:\\output\\det_test',
-        'cfgfile' : 'cfg/yolov3_kaist.cfg',
+        'cfgfile' : 'cfg/yolov3_flir.cfg',
         'modelfile' : 'K:/weights/yolov3_kaist_mix_80_20.weights',
         'use_cuda' : False,
         'gpu' : 0

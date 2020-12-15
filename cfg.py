@@ -216,9 +216,10 @@ def load_conv_bn(buf, start, conv_model, bn_model):
     #conv_model.weight.data.copy_(torch.from_numpy(buf[start:start+num_w])); start = start + num_w
     try:
         conv_model.weight.data.copy_(torch.from_numpy(buf[start:start + num_w]).view_as(conv_model.weight.data)); start = start + num_w
-    except:
+    except Exception as exception:
         print('cannot load bn conv, load from yolov3 from {} to {}'.format(start,start+num_w))
         print('!'*50)
+        print(type(exception).__name__)
         buf_yolov3 = load_bn_from_yolov3_instead_random(start,start+num_w)
         conv_model.weight.data.copy_(torch.from_numpy(buf_yolov3).view_as(conv_model.weight.data));
         start = start + num_w
