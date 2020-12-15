@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="micc_unifi" stopOnFirstError="true" overwriteAll="false" deleteMissingItems="true" showNewOnSourceInSync="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="micc_unifi" stopOnFirstError="true" overwriteAll="false" deleteMissingItems="true" showNewOnSourceInSync="false">
     <serverData>
       <paths name="micc_unifi">
         <serverdata>
           <mappings>
-            <mapping deploy="/task-conditioned" local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="micc_unifi (project level)">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

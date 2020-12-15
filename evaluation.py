@@ -19,7 +19,8 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
     names = load_class_names(name_list)
     #trainset_path = options['trainset_path']
     valset_path = options['valset_path']
-    prefix = 'results'
+    outpath = '/'.join(outfile.split('/')[:-1])
+    outfilename = outfile.split('/')[-1]
 
     valid_files = get_image_list(valset_path,valid_images)
     
@@ -55,10 +56,10 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
         valid_dataset, batch_size=valid_batchsize, shuffle=False, **kwargs) 
 
     fps = [0]*m.num_classes
-    if not os.path.exists(prefix):
-        os.mkdir(prefix)
+    if not os.path.exists(outpath):
+        os.mkdir(outpath)
     for i in range(m.num_classes):
-        buf = '%s/%s_%s.txt' % (prefix, outfile, names[i])
+        buf = '%s/%s_%s.txt' % (outpath,outfilename, names[i])
         fps[i] = open(buf, 'w')
    
     lineId = -1
@@ -110,9 +111,9 @@ def evaluation_models(*args):
     #default options
     options = {
         'datacfg' : 'data/flir.data',
-        'outfile' : 'det_test',
+        'outfile' : 'K:\\output\\det_test',
         'cfgfile' : 'cfg/yolov3_kaist.cfg',
-        'modelfile' : 'weights/yolov3_kaist_mix_80_20.weights',
+        'modelfile' : 'K:/weights/yolov3_kaist_mix_80_20.weights',
         'use_cuda' : False,
         'gpu' : 0
     }
@@ -120,8 +121,8 @@ def evaluation_models(*args):
 
     datacfg = options['datacfg']
     outfile = options['outfile']
-    cfgfile = options['cfgfile']
-    modelfile = options['modelfile']
+    cfgfile = os.path.realpath(options['cfgfile'])
+    modelfile = os.path.realpath(options['modelfile'])
     use_cuda = options['use_cuda'] == 'True'
     gpu = options['gpu']
 
@@ -131,9 +132,9 @@ def evaluation_models(*args):
 
     res_prefix = 'results/' + outfile
 
-    valid(datacfg, cfgfile, modelfile, outfile,use_cuda)
+    valid(datacfg, cfgfile, modelfile, outfile,use_cuda=use_cuda)
     #cur_mAP = _do_python_eval(res_prefix, testlist, class_names, output_dir='output')
-    convert_predict_to_JSON()
+    convert_predict_to_JSON('/'.join(outfile.split('/')[:-1]))
     #all_ap, day_ap, night_ap, all_mr, day_mr, night_mr = meanAP_LogAverageMissRate()
     #print('mAP: %.4f \nap: %.4f ap_d: %.4f ap_n: %.4f lamr: %.4f mr_d: %.4f mr_n: %.4f \n' % (
     #    cur_mAP, all_ap / 100.0, day_ap / 100.0, night_ap / 100.0, all_mr / 100.0, day_mr / 100.0, night_mr / 100.0))

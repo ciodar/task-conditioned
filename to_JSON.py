@@ -3,9 +3,8 @@ Author: Kieu My
 '''
 import os
 import json
-def convert_predict_to_JSON():
+def convert_predict_to_JSON(path_source):
     # path_source = os.getcwd()
-    path_source = 'results'
 
     filename = 'det_test_person.txt'
 
