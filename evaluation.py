@@ -13,16 +13,14 @@ from to_JSON import convert_predict_to_JSON
 
 def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,gpu = 0):
     options = read_data_cfg(datacfg)
-    valid_images = options['valid']
-    print('Validate with the list file: ',valid_images)
+    valid_file = options['valid']
+    print('Validate with the list file: ',valid_file)
     name_list = options['names']
     names = load_class_names(name_list)
     #trainset_path = options['trainset_path']
-    valset_path = options['valset_path']
+
     outpath = '/'.join(outfile.split('/')[:-1])
     outfilename = outfile.split('/')[-1]
-
-    valid_files = get_image_list(valset_path,valid_images)
     
     m = Darknet(cfgfile)
 
@@ -43,7 +41,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
         m.cuda()
     m.eval()
     #TODO Windows compatibiity
-    valid_dataset = dataset.listDataset(valid_images, shape=(m.width, m.height),
+    valid_dataset = dataset.listDataset(valid_file, shape=(m.width, m.height),
                        shuffle=False,
                        transform=transforms.Compose([
                            transforms.ToTensor(),
@@ -84,7 +82,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
         
         for i in range(len(batch_boxes)):
             lineId += 1
-            fileId = os.path.basename(valid_files[lineId]).split('.')[0]
+            fileId = os.path.basename(valid_dataset.get_image(lineId)).split('.')[0]
             #width, height = get_image_size(valid_files[lineId])
             width, height = float(org_w[i]), float(org_h[i])
             # print(valid_files[lineId])
@@ -112,7 +110,7 @@ def evaluation_models(*args):
     options = {
         'datacfg' : 'data/flir.data',
         'outfile' : 'K:\\output\\det_test',
-        'cfgfile' : 'cfg/yolov3_flir.cfg',
+        'cfgfile' : 'cfg/yolov3_kaist.cfg',
         'modelfile' : 'K:/weights/yolov3_kaist_mix_80_20.weights',
         'use_cuda' : False,
         'gpu' : 0

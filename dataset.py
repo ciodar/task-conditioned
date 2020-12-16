@@ -3,6 +3,7 @@
 
 import os
 import random
+import json
 import torch
 import numpy as np
 from torch.utils.data import Dataset
@@ -13,9 +14,7 @@ from image import *
 class listDataset(Dataset):
     def __init__(self, root, shape=None, shuffle=True, crop=False, jitter=0.3, hue=0.1, saturation=1.5, exposure=1.5,
                  transform=None, target_transform=None, train=False, seen=0, batch_size=64, num_workers=4,condition=False):
-       with open(root, 'r') as file:
-           self.lines = file.readlines()
-
+       self.lines = self.read_dataset(root)
        if shuffle:
            random.shuffle(self.lines)
 
@@ -42,6 +41,21 @@ class listDataset(Dataset):
 
     def __len__(self):
         return self.nSamples
+
+    def get_image(self,index):
+        assert index <= len(self), 'index range error'
+        return self.lines[index]
+
+    def read_dataset(self,path):
+        realpath = os.path.realpath(path)
+        with open(realpath, 'r') as file:
+            valid_path = os.path.dirname(realpath)
+            if(path.split('.')[-1]=='json'):
+                data = json.load(file)
+                valid_images = [os.path.join(valid_path,*image['file_name'].split('/')) for image in data['images']]
+            else:
+                valid_images = file.readlines()
+        return valid_images
 
     def get_different_scale(self):
         if self.seen < 50*self.batch_size:
