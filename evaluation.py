@@ -6,7 +6,7 @@ from utils import get_all_boxes, bbox_iou, nms, read_data_cfg, load_class_names,
 from image import correct_yolo_boxes
 import os
 import tqdm
-#from my_eval import _do_python_eval
+from my_eval import _do_python_eval
 #from lamr_ap import meanAP_LogAverageMissRate
 from to_JSON import convert_predict_to_JSON
 #from cfg import parse_cfg
@@ -62,7 +62,7 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
    
     lineId = -1
     
-    conf_thresh = 0.005
+    conf_thresh = 0.15
     nms_thresh = 0.45
     if m.net_name() == 'region': # region_layer
         shape=(0,0)
@@ -133,6 +133,7 @@ def evaluation_models(*args):
     valid(datacfg, cfgfile, modelfile, outfile,use_cuda=use_cuda)
     #cur_mAP = _do_python_eval(res_prefix, testlist, class_names, output_dir='output')
     convert_predict_to_JSON('/'.join(outfile.split('/')[:-1]))
+
     #all_ap, day_ap, night_ap, all_mr, day_mr, night_mr = meanAP_LogAverageMissRate()
     #print('mAP: %.4f \nap: %.4f ap_d: %.4f ap_n: %.4f lamr: %.4f mr_d: %.4f mr_n: %.4f \n' % (
     #    cur_mAP, all_ap / 100.0, day_ap / 100.0, night_ap / 100.0, all_mr / 100.0, day_mr / 100.0, night_mr / 100.0))
