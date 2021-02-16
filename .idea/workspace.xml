@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="Modified evaluation to handle lack of conditions">
+    <list default="true" id="f105a18d-1923-4d6d-952f-7c5ca73a5b64" name="Default Changelist" comment="Added MSE and detection metrics">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cfg/yolov3_kaist.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/cfg/yolov3_kaist.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json_annotations.py" beforeDir="false" afterPath="$PROJECT_DIR$/json_annotations.py" afterDir="false" />
     </list>
@@ -2552,6 +2552,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
@@ -2561,7 +2563,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../weights" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
@@ -2622,6 +2624,9 @@
       <module name="task-conditioned" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\Dario\anaconda3\envs\tesi_pytorch\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -2697,7 +2702,14 @@
       <workItem from="1609093495506" duration="5771000" />
       <workItem from="1609192011843" duration="885000" />
       <workItem from="1609193167878" duration="149000" />
-      <workItem from="1609320785361" duration="9319000" />
+      <workItem from="1609320785361" duration="10023000" />
+      <workItem from="1609337728707" duration="215000" />
+      <workItem from="1611260254878" duration="4340000" />
+      <workItem from="1612289650624" duration="337000" />
+      <workItem from="1612290375110" duration="4467000" />
+      <workItem from="1612359660036" duration="2208000" />
+      <workItem from="1612558414254" duration="2056000" />
+      <workItem from="1612718321416" duration="1997000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed detection regression">
       <created>1606575771239</created>
@@ -2783,7 +2795,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608127574530</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added MSE and detection metrics">
+      <created>1609336896836</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1609336896836</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2814,7 +2833,8 @@
     <MESSAGE value="Detection evaluation enhancements" />
     <MESSAGE value="flir network fix" />
     <MESSAGE value="dataset json import" />
-    <option name="LAST_COMMIT_MESSAGE" value="dataset json import" />
+    <MESSAGE value="Added MSE and detection metrics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added MSE and detection metrics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2830,14 +2850,9 @@
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/evaluation.py</url>
-          <line>80</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/json_annotations.py</url>
-          <line>49</line>
-          <option name="timeStamp" value="62" />
+          <line>81</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -2850,8 +2865,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1609095041688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/task_conditioned$json_annotations.coverage" NAME="json_annotations Coverage Results" MODIFIED="1609336089030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1612291771499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/task_conditioned$json_annotations.coverage" NAME="json_annotations Coverage Results" MODIFIED="1612719047381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/task_conditioned$detect.coverage" NAME="detect Coverage Results" MODIFIED="1607641106839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

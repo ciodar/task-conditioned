@@ -54,11 +54,13 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
         valid_dataset, batch_size=valid_batchsize, shuffle=False, **kwargs) 
 
     fps = [0]*m.num_classes
+    det = [0]*m.num_classes
     if not os.path.exists(outpath):
         os.mkdir(outpath)
     for i in range(m.num_classes):
         buf = '%s/%s_%s.txt' % (outpath,outfilename, names[i])
         fps[i] = open(buf, 'w')
+        det[i] = []
    
     lineId = -1
     
@@ -78,7 +80,8 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
         else:
             output = m(data)
 
-        batch_boxes = get_all_boxes(output, shape, conf_thresh, m.num_classes, only_objectness=0, validation=True,use_cuda=use_cuda)
+        batch_boxes = get_all_boxes(output, shape, conf_thresh, m.num_classes
+                                    , only_objectness=0, validation=True,use_cuda=use_cuda)
         
         for i in range(len(batch_boxes)):
             lineId += 1
@@ -100,9 +103,11 @@ def valid(datacfg, cfgfile, modelfile, outfile, condition=False, use_cuda=False,
                     cls_conf = box[5+2*j]
                     cls_id = int(box[6+2*j])
                     prob = det_conf * cls_conf
-                    fps[cls_id].write('%s %f %f %f %f %f\n' % (fileId, prob, x1, y1, x2, y2))
+                    det[cls_id].append('%s %f %f %f %f %f\n' % (fileId, prob, x1, y1, x2, y2))
 
     for i in range(m.num_classes):
+        for l in det[i]:
+            fps[i].write(l)
         fps[i].close()
 
 def evaluation_models(*args):
